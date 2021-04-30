@@ -1,0 +1,1 @@
+Обученная модель: https://drive.google.com/file/d/1--CVaOFTcK5G2CUQdi6K1sSz9o61tx93/view?usp=sharing
