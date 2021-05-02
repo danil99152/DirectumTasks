@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f713433-0ad3-4f71-9120-29ddddd8e971" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Task1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Task4" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -76,6 +75,7 @@
       <workItem from="1619808651760" duration="2228000" />
       <workItem from="1619811320912" duration="2079000" />
       <workItem from="1619814648371" duration="4430000" />
+      <workItem from="1619965866742" duration="674000" />
     </task>
     <servers />
   </component>
