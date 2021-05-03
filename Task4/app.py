@@ -18,22 +18,24 @@ UPLOAD_FOLDER = 'images/'
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-def conver_cat(cat):
+
+def convert_cat(cat):
     return {
-        'PERSON': "PERSON",
         'ORG': "ORGANIZATION",
         'GPE': "LOCATION",
-        'DATE': "DATE",
-        'MONEY': "MONEY"
     }[cat]
+
 
 def get_facts(doc):
     facts = []
-    fact = {"text": [], "tag": [], "tokens":[]}
+    fact = {"text": [], "tag": [], "tokens": []}
     tokens = {"text": [], "offset": []}
     for ent in doc.ents:
         fact['text'] = ent.text
-        fact['tag'] = conver_cat(ent.label_)
+        try:
+            fact['tag'] = convert_cat(ent.label_)
+        except KeyError:
+            fact['tag'] = ent.label_
         start_char = 0
         for token in ent:
             tokens['text'] = token.text
@@ -54,19 +56,23 @@ def ocr_core(file):
 
 @app.route('/<seq>')
 def upload_page(seq):
-    doc = nlp(seq)
-    # if file.rsplit('.', 1)[1].lower() == "tif":
-    #     filename = file.rsplit('/', 1)[-1].lower()
-    #     tiffile = UPLOAD_FOLDER + filename.replace(filename.rsplit('.', 1)[1].lower(), 'jpg')
-    #     try:
-    #         im = Image.open(file)
-    #         im.thumbnail(im.size)
-    #         im.save(tiffile, "JPEG", quality=100)
-    #     except Exception as e:
-    #         print(e)
-    #     file = tiffile
-    #
-    # extracted_text = ocr_core(seq)
+    print(seq)
+    if seq.rsplit('.', 1)[1].lower() == "tif":
+        filename = seq.rsplit('/', 1)[-1].lower()
+        tiffile = UPLOAD_FOLDER + filename.replace(filename.rsplit('.', 1)[1].lower(), 'jpg')
+        try:
+            im = Image.open(seq)
+            im.thumbnail(im.size)
+            im.save(tiffile, "JPEG", quality=100)
+        except Exception as e:
+            print(e)
+        seq = tiffile
+
+        extracted_text = ocr_core(seq)
+        doc = nlp(extracted_text)
+    else:
+        doc = nlp(seq)
+
     facts = get_facts(doc)
     #
     return {
