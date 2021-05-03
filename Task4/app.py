@@ -30,8 +30,9 @@ def get_facts(doc):
             tokens['offset'] = ent.start_char + start_char
             start_char = len(token.text) + 1
             new_tokens = tokens.copy()
-            fact['tokens'] = new_tokens
+            fact['tokens'].append(new_tokens)
         new_fact = fact.copy()
+        fact['tokens'] = []
         facts.append(new_fact)
     return facts
 
