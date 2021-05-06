@@ -37,7 +37,7 @@ def get_facts(doc):
     return facts
 
 
-@app.route('/<seq>')
+@app.route('/seq=<seq>')
 def upload_page(seq):
     doc = nlp(seq)
     facts = get_facts(doc)
